@@ -350,6 +350,13 @@ fun main(args: Array<String>) {
     println(members
         .fold(1) { t, e -> t + e.num })
 
+    var nullableInteger: Int?
+
+    nullableInteger = null
+    nullableInteger = 10
+
+    nullableInteger?.let { println("$it") }
+    nullableInteger?.run { println("$this") }
 }
 
 data class Member(
