@@ -128,4 +128,115 @@ fun getScore(x: Int) = when {
 
 ## Idioms
 
-## Strings
+1. DTOs
+
+```kotlin
+data class Member(
+    val name: String,
+    var email: String?
+)
+// 메소드 제공
+// getter & setter(var-only)
+// equals, hashCode
+// toString
+// copy
+
+val member = Member("memberA", null)            // memberA, null
+
+val copied = member.copy(email = "newEmail")    // memberA, newEmail
+```
+
+2. Defaults values for function parameters
+
+```kotlin
+fun foo(x: Int = 0, y: Int = 0, name: String) = "$name : ${x + y}"
+
+foo(name = "f1")            // f1 : 0
+foo(y = 10, name = "f2")    // f2 : 10
+foo(x = 1, name = "f3")     // f3 : 1
+foo(1, 2, "f4")             // f4 : 3
+```
+
+3. Filter a list
+
+```kotlin
+val list = listOf(-3, -2, -1, 0, 1, 2, 3)
+val pos = list.filter { it > 0 }
+val neg = list.filter { it < 0 }
+```
+
+4. Mutable, Immutable Collections
+
+```kotlin
+val mutableListOf = mutableListOf(1, 2, 3)
+val immutableListOf = listOf(1, 2, 3)
+
+mutableListOf.add(4)
+//immutableListOf.add(4) : X
+```
+
+5. Access a map entry
+
+```kotlin
+val map = mutableMapOf("a" to "A", "b" to "B", "c" to "C")
+println(map["a"])
+map["d"] = "D"
+
+for ((lower, upper) in map) {
+    println("$lower -> $upper")
+}
+```
+
+6. Lazy property
+
+```kotlin
+lateinit var inputValue: String
+
+fun main() {
+    val p: String by lazy {
+        "Will" + "be" + "initialized" + "lazily : " + inputValue.length
+    }
+    inputValue = "something"
+
+    println("$p\nthen initialized!")
+}
+```
+
+7. Extension functions
+
+```kotlin
+fun String.upperOnlyLetter(): String {
+    for (c in this) if (!c.isLetter()) throw IllegalArgumentException()
+    return this.uppercase()
+}
+
+fun main() {
+    "string".upperOnlyLetter()  // STRING
+    "123a".upperOnlyLetter()    // IllegalArgumentException 
+}
+```
+
+8. Singleton
+
+```kotlin
+object Resource {
+    const val name = "name"
+}
+```
+
+9. Instantiate an abstract class
+
+```kotlin
+abstract class Foo {
+    abstract fun bar()
+}
+
+fun main() {
+    val foo = object : Foo() {
+        override fun bar() {
+            TODO("Not yet implemented")
+        }
+    }
+    foo.bar()
+}
+```
