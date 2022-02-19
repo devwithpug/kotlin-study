@@ -2,6 +2,7 @@
 # Created by https://www.toptal.com/developers/gitignore/api/intellij,kotlin,java,gradle
 # Edit at https://www.toptal.com/developers/gitignore?templates=intellij,kotlin,java,gradle
 
+.idea
 .DS_Store
 *.swp
 
