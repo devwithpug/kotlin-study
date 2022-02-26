@@ -1,4 +1,4 @@
-package ch4
+package ch5
 
 fun main() {
     val people = listOf(

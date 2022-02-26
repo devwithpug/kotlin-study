@@ -1,6 +1,4 @@
-package ch4
-
-import kotlin.jvm.internal.Ref
+package ch5
 
 data class Person(
     val name: String,
