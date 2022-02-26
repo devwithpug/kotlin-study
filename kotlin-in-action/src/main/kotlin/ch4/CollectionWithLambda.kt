@@ -1,5 +1,7 @@
 package ch4
 
+import kotlin.jvm.internal.Ref
+
 data class Person(
     val name: String,
     val age: Int
@@ -17,6 +19,20 @@ fun findTheOldest(people: List<Person>): Person? {
     return theOldest
 }
 
+fun printProblemCounts(responses: Collection<String>) {
+    var clientErrors = 0
+    var serverErrors = 0
+    responses.forEach {
+        if (it.startsWith("4")) {
+            clientErrors++
+        }
+        if (it.startsWith("5")) {
+            serverErrors++
+        }
+    }
+    println("$clientErrors client errors, $serverErrors server errors")
+}
+
 fun main() {
     val people = listOf(Person("Alice", 29), Person("Bob", 31))
     val theOldest = findTheOldest(people)
@@ -31,4 +47,7 @@ fun main() {
     people.maxByOrNull { p: Person -> p.age } // 함수의 맨 마지막 인자가 람다 식이므로 괄호 밖으로 빼낼 수 있다.
     people.maxByOrNull { p -> p.age } // 컴파일러가 문맥으로부터 유추할 수 있는 인자 타입을 생략할 수 있다.
     people.maxByOrNull { it.age } // 인자가 단 하나 뿐인 경우 인자에 이름을 붙이지 않아도 된다.
+
+    printProblemCounts(listOf("200", "400", "404", "500"))
+    // 2 client errors, 1 server errors
 }
