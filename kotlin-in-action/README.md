@@ -7,7 +7,7 @@ by Dmitry Jemerov and Svetlana Isakova
 - [ch 1. 코틀린이란 무엇이며, 왜 필요한가?](./src/main/kotlin/ch1)
 - [ch 2. 코틀린 기초](./src/main/kotlin/ch2)
 - [ch 3. 함수 정의와 호출](./src/main/kotlin/ch3)
-- ch 4. 클래스, 객체, 인터페이스
+- [ch 4. 클래스, 객체, 인터페이스](./src/main/kotlin/ch4)
 - [ch 5. 람다로 프로그래밍](./src/main/kotlin/ch5)
 - ch 6. 코틀린 타입 시스템
 
