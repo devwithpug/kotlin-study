@@ -21,6 +21,8 @@ fun main() {
 
     val resultString2 = items.joinToString(prefix = "[", postfix = "]") { it.name }
     println(resultString2) // [itemA, itemB]
+
+    println("AnonymousFunction".myFilterWithAnonymousFunction { it in 'A'..'Z' }) // AF
 }
 
 fun String.myFilter(predicate: (Char) -> Boolean) = buildString {
@@ -33,6 +35,15 @@ fun String.myFilter(predicate: (Char) -> Boolean) = buildString {
         }
     }
 }
+
+fun String.myFilterWithAnonymousFunction(predicate: (Char) -> Boolean) = buildString(fun(sb) {
+    for (index in indices) {
+        val element = get(index)
+        if (predicate(element)) {
+            sb.append(element)
+        }
+    }
+})
 
 fun <T> Collection<T>.joinToString(
     separator: String = ", ",

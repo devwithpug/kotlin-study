@@ -37,8 +37,25 @@ fun lookForAliceWithLocalReturn(people: List<Person>) {
     println("Alice is not found")
 }
 
+fun lookForAliceWithAnonymousFunction(people: List<Person>) {
+    people.forEach(fun(person) {
+        if (person.name == "Alice") {
+            println("Found!")
+            return
+        }
+        println("${person.name} is not Alice")
+    })
+}
+
 fun main() {
     lookForAlice(people) // Found!
     lookForEachAlice(people) // Found!
     lookForAliceWithLocalReturn(people)
+    lookForAliceWithAnonymousFunction(people)
+
+    people.filter(fun(person): Boolean {
+        return person.age < 30
+    })
+
+    people.filter(fun(person) = person.age < 30)
 }
