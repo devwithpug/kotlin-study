@@ -27,7 +27,18 @@ fun lookForEachAlice(people: List<Person>) {
     println("Alice is not found")
 }
 
+fun lookForAliceWithLocalReturn(people: List<Person>) {
+    people.forEach foo@{
+        if (it.name == "Alice") {
+            println("Found!")
+            return@foo
+        }
+    }
+    println("Alice is not found")
+}
+
 fun main() {
     lookForAlice(people) // Found!
     lookForEachAlice(people) // Found!
+    lookForAliceWithLocalReturn(people)
 }
