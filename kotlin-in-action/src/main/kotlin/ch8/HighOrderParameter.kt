@@ -23,6 +23,7 @@ fun main() {
     println(resultString2) // [itemA, itemB]
 
     println("AnonymousFunction".myFilterWithAnonymousFunction { it in 'A'..'Z' }) // AF
+    println("AAABBacsdfdDDFDFD".myFilterWithExtensionFunction { it in 'A'..'Z' }) // AAABBDDFDFD
 }
 
 fun String.myFilter(predicate: (Char) -> Boolean) = buildString {
@@ -35,6 +36,18 @@ fun String.myFilter(predicate: (Char) -> Boolean) = buildString {
         }
     }
 }
+
+private fun StringBuilder.filterString(predicate: (Char) -> Boolean, string: String) {
+    for (index in string.indices) {
+        val element = string[index]
+        if (predicate(element)) {
+            append(element)
+        }
+    }
+}
+
+fun String.myFilterWithExtensionFunction(predicate: (Char) -> Boolean) =
+    buildString { filterString(predicate, this@myFilterWithExtensionFunction) }
 
 fun String.myFilterWithAnonymousFunction(predicate: (Char) -> Boolean) = buildString(fun(sb) {
     for (index in indices) {
