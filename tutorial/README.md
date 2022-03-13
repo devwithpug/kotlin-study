@@ -1,4 +1,4 @@
-# Kotlin 듀토리얼 :D
+# [Kotlin 듀토리얼 :D](https://kotlinlang.org/docs/basic-syntax.html)
 
 ## Basic syntax
 
