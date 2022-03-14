@@ -24,6 +24,7 @@ fun main() {
 
     println("AnonymousFunction".myFilterWithAnonymousFunction { it in 'A'..'Z' }) // AF
     println("AAABBacsdfdDDFDFD".myFilterWithExtensionFunction { it in 'A'..'Z' }) // AAABBDDFDFD
+    println("myFilterWithAlso".myFilterWithAlso { it in 'A'..'Z' }) // FWA
 }
 
 fun String.myFilter(predicate: (Char) -> Boolean) = buildString {
@@ -32,6 +33,17 @@ fun String.myFilter(predicate: (Char) -> Boolean) = buildString {
             val element = get(index)
             if (predicate(element)) {
                 this@buildString.append(element)
+            }
+        }
+    }
+}
+
+fun String.myFilterWithAlso(predicate: (Char) -> Boolean) = buildString {
+    this@myFilterWithAlso.also {
+        for (index in it.indices) {
+            val element = it[index]
+            if (predicate(element)) {
+                append(element)
             }
         }
     }
